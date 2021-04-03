@@ -1,0 +1,10 @@
+# @package _group_
+name: 'seresnext50_32x4d'
+n_channels: 3
+batch_size: 128
+accumulate_grad_batches: 1
+epochs: 100
+lr: 1e-3
+mixup: 0.8
+drop_rate: 0.2
+warmup_prop: 0.1

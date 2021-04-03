@@ -1,0 +1,24 @@
+defaults:
+  - model: resnet50
+
+comment: 'comment'
+folds: [0,1,2,3,4]
+gpus: "0"
+model_type: timm
+gradient_clip_val: 0
+speech: False
+loss_fn: BCEWithLogitsLoss
+
+pos_weight: False  # weight rare classes higher in the loss function
+weighted_sampler: False  # sample rare classes more oftent
+
+data:
+  clip_duration: 4
+  n_mels: 128
+  spec_min_width: 128
+
+hydra:
+  run:
+    dir: '/wdata/models/${model.name}-ep${model.epochs}-bs${model.batch_size}-${data.n_mels}-${comment}'
+  sweep:
+    dir: '/wdata/models/${model.name}-ep${model.epochs}-bs${model.batch_size}-${data.n_mels}-${comment}'
